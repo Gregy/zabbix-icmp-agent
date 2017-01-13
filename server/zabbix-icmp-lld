@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo '{"data":['
+
+firstloop='true'
+echo "$1" | tr ';' '\n' | while read server count interval description; do
+    [ "$server" = "" ] && continue
+    [ "$count" = "" ] && count="5"
+    [ "$interval" = "" ] && interval="0.2"
+    if [ "$firstloop" = "true" ]; then
+        firstloop='false'
+    else
+        echo ','
+    fi
+    echo "{ \"{#PINGSERVER}\":\"$server\",\"{#PINGCOUNT}\":\"$count\", \"{#PINGINTERVAL}\":\"$interval\", \"{#PINGDESC}\":\"$description\"}"
+done
+
+echo ']}'
