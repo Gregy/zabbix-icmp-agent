@@ -10,3 +10,9 @@ Copy zabbix-icmp-lld to external scripts directory on your zabbix server. Import
 
 ## How does it work
 This template bypasses zabbix limitation of only allowing one template link per host by misusing low level discovery. To use it you have to link the template with a host and then define a special macro {$PINGTARGETS} on the host. This macro's contents is fed to the zabbix-icmp-lld script which returns LLD JSON. Zabbix generates items, triggers and graphs based on this data.
+
+Format of PINGTARGETS macro is ; separated list of targets with some other information about them:
+```
+<target dns/ip> <pingcount> <pinginterval> <pingdesc>; <target dns/ip> <pingcount> <pinginterval> <pingdesc>; <target dns/ip> <pingcount> <pinginterval> <pingdesc>
+```
+
