@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>3.0</version>
+    <date>2019-07-11T09:20:22Z</date>
+    <groups>
+        <group>
+            <name>Active Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Active pinger</template>
+            <name>Active pinger</name>
+            <description />
+            <groups>
+                <group>
+                    <name>Active Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>Network</name>
+                </application>
+            </applications>
+            <items />
+            <discovery_rules>
+                <discovery_rule>
+                    <name>ping static discovery</name>
+                    <type>10</type>
+                    <snmp_community />
+                    <snmp_oid />
+                    <key>zabbix-icmp-lld[{$PINGTARGETS}]</key>
+                    <delay>600</delay>
+                    <status>0</status>
+                    <allowed_hosts />
+                    <snmpv3_contextname />
+                    <snmpv3_securityname />
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase />
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase />
+                    <delay_flex />
+                    <params />
+                    <ipmi_sensor />
+                    <authtype>0</authtype>
+                    <username />
+                    <password />
+                    <publickey />
+                    <privatekey />
+                    <port />
+                    <filter>
+                        <evaltype>0</evaltype>
+                        <formula />
+                        <conditions />
+                    </filter>
+                    <lifetime>1</lifetime>
+                    <description>PINGTARGETS syntax:
+
+&lt;target dns/ip&gt; &lt;pingcount&gt; &lt;pinginterval&gt; &lt;pingdesc&gt;; &lt;target dns/ip&gt; &lt;pingcount&gt; &lt;pinginterval&gt; &lt;pingdesc&gt;; &lt;target dns/ip&gt; &lt;pingcount&gt; &lt;pinginterval&gt; &lt;pingdesc&gt;</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>avg rtt to {#PINGSERVER} ({#PINGDESC})</name>
+                            <type>7</type>
+                            <snmp_community />
+                            <multiplier>0</multiplier>
+                            <snmp_oid />
+                            <key>custom.ping[{#PINGSERVER}, avg, {#PINGCOUNT}, {#PINGINTERVAL}]</key>
+                            <delay>60</delay>
+                            <history>180</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>0</value_type>
+                            <allowed_hosts />
+                            <units>ms</units>
+                            <delta>0</delta>
+                            <snmpv3_contextname />
+                            <snmpv3_securityname />
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase />
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase />
+                            <formula>1</formula>
+                            <delay_flex />
+                            <params />
+                            <ipmi_sensor />
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username />
+                            <password />
+                            <publickey />
+                            <privatekey />
+                            <port />
+                            <description />
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Network</name>
+                                </application>
+                            </applications>
+                            <valuemap />
+                            <logtimefmt />
+                            <application_prototypes />
+                        </item_prototype>
+                        <item_prototype>
+                            <name>packet loss to {#PINGSERVER} ({#PINGDESC})</name>
+                            <type>7</type>
+                            <snmp_community />
+                            <multiplier>0</multiplier>
+                            <snmp_oid />
+                            <key>custom.ping[{#PINGSERVER}, loss, {#PINGCOUNT}, {#PINGINTERVAL}]</key>
+                            <delay>60</delay>
+                            <history>180</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>0</value_type>
+                            <allowed_hosts />
+                            <units>%</units>
+                            <delta>0</delta>
+                            <snmpv3_contextname />
+                            <snmpv3_securityname />
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase />
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase />
+                            <formula>1</formula>
+                            <delay_flex />
+                            <params />
+                            <ipmi_sensor />
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username />
+                            <password />
+                            <publickey />
+                            <privatekey />
+                            <port />
+                            <description />
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Network</name>
+                                </application>
+                            </applications>
+                            <valuemap />
+                            <logtimefmt />
+                            <application_prototypes />
+                        </item_prototype>
+                        <item_prototype>
+                            <name>max rtt to {#PINGSERVER} ({#PINGDESC})</name>
+                            <type>7</type>
+                            <snmp_community />
+                            <multiplier>0</multiplier>
+                            <snmp_oid />
+                            <key>custom.ping[{#PINGSERVER}, max, {#PINGCOUNT}, {#PINGINTERVAL}]</key>
+                            <delay>60</delay>
+                            <history>180</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>0</value_type>
+                            <allowed_hosts />
+                            <units>ms</units>
+                            <delta>0</delta>
+                            <snmpv3_contextname />
+                            <snmpv3_securityname />
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase />
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase />
+                            <formula>1</formula>
+                            <delay_flex />
+                            <params />
+                            <ipmi_sensor />
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username />
+                            <password />
+                            <publickey />
+                            <privatekey />
+                            <port />
+                            <description />
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Network</name>
+                                </application>
+                            </applications>
+                            <valuemap />
+                            <logtimefmt />
+                            <application_prototypes />
+                        </item_prototype>
+                        <item_prototype>
+                            <name>min rtt to {#PINGSERVER} ({#PINGDESC})</name>
+                            <type>7</type>
+                            <snmp_community />
+                            <multiplier>0</multiplier>
+                            <snmp_oid />
+                            <key>custom.ping[{#PINGSERVER}, min, {#PINGCOUNT}, {#PINGINTERVAL}]</key>
+                            <delay>60</delay>
+                            <history>180</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>0</value_type>
+                            <allowed_hosts />
+                            <units>ms</units>
+                            <delta>0</delta>
+                            <snmpv3_contextname />
+                            <snmpv3_securityname />
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase />
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase />
+                            <formula>1</formula>
+                            <delay_flex />
+                            <params />
+                            <ipmi_sensor />
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username />
+                            <password />
+                            <publickey />
+                            <privatekey />
+                            <port />
+                            <description />
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Network</name>
+                                </application>
+                            </applications>
+                            <valuemap />
+                            <logtimefmt />
+                            <application_prototypes />
+                        </item_prototype>
+                    </item_prototypes>
+                    <trigger_prototypes>
+                        <trigger_prototype>
+                            <expression>{Active pinger:custom.ping[{#PINGSERVER}, loss, {#PINGCOUNT}, {#PINGINTERVAL}].min(600s)}&gt;0</expression>
+                            <name>packet loss from {HOST.NAME} to {#PINGSERVER} ({#PINGDESC})</name>
+                            <url />
+                            <status>0</status>
+                            <priority>3</priority>
+                            <description />
+                            <type>0</type>
+                            <dependencies />
+                        </trigger_prototype>
+                    </trigger_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>ping to {#PINGSERVER} ({#PINGDESC})</name>
+                            <width>900</width>
+                            <height>200</height>
+                            <yaxismin>0.0000</yaxismin>
+                            <yaxismax>100.0000</yaxismax>
+                            <show_work_period>1</show_work_period>
+                            <show_triggers>1</show_triggers>
+                            <type>0</type>
+                            <show_legend>1</show_legend>
+                            <show_3d>0</show_3d>
+                            <percent_left>0.0000</percent_left>
+                            <percent_right>0.0000</percent_right>
+                            <ymin_type_1>1</ymin_type_1>
+                            <ymax_type_1>0</ymax_type_1>
+                            <ymin_item_1>0</ymin_item_1>
+                            <ymax_item_1>0</ymax_item_1>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>0</sortorder>
+                                    <drawtype>3</drawtype>
+                                    <color>0000DD</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Active pinger</host>
+                                        <key>custom.ping[{#PINGSERVER}, avg, {#PINGCOUNT}, {#PINGINTERVAL}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>3</drawtype>
+                                    <color>BB00BB</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>4</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Active pinger</host>
+                                        <key>custom.ping[{#PINGSERVER}, max, {#PINGCOUNT}, {#PINGINTERVAL}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>2</sortorder>
+                                    <drawtype>3</drawtype>
+                                    <color>00BB00</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>1</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Active pinger</host>
+                                        <key>custom.ping[{#PINGSERVER}, min, {#PINGCOUNT}, {#PINGINTERVAL}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>3</sortorder>
+                                    <drawtype>3</drawtype>
+                                    <color>DD0000</color>
+                                    <yaxisside>1</yaxisside>
+                                    <calc_fnc>4</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Active pinger</host>
+                                        <key>custom.ping[{#PINGSERVER}, loss, {#PINGCOUNT}, {#PINGINTERVAL}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                    <host_prototypes />
+                </discovery_rule>
+            </discovery_rules>
+            <macros>
+                <macro>
+                    <macro>{$PINGTARGETS}</macro>
+                    <value />
+                </macro>
+            </macros>
+            <templates />
+            <screens />
+        </template>
+    </templates>
+</zabbix_export>
