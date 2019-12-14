@@ -238,7 +238,7 @@
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Active pinger:custom.ping[{#PINGSERVER}, loss, {#PINGCOUNT}, {#PINGINTERVAL}].min(600s)}&gt;0</expression>
+                            <expression>{Active pinger:custom.ping[{#PINGSERVER}, loss, {#PINGCOUNT}, {#PINGINTERVAL}].min(600s)}&lt;&gt;0</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
                             <name>packet loss from {HOST.NAME} to {#PINGSERVER} ({#PINGDESC})</name>
