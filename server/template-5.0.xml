@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2020-10-11T19:57:40Z</date>
+    <groups>
+        <group>
+            <name>Active Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Active pinger</template>
+            <name>Active pinger</name>
+            <groups>
+                <group>
+                    <name>Active Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>Network</name>
+                </application>
+            </applications>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>ping static discovery</name>
+                    <type>INTERNAL</type>
+                    <key>zabbix[version]</key>
+                    <delay>5m</delay>
+                    <lifetime>1d</lifetime>
+                    <description>PINGTARGETS syntax:&#13;
+&#13;
+&lt;target dns/ip&gt; &lt;pingcount&gt; &lt;pinginterval&gt; &lt;pingdesc&gt;; &lt;target dns/ip&gt; &lt;pingcount&gt; &lt;pinginterval&gt; &lt;pingdesc&gt;; &lt;target dns/ip&gt; &lt;pingcount&gt; &lt;pinginterval&gt; &lt;pingdesc&gt;&#13;
+&#13;
+We use zabbix[version] as a noop item - logic in preprocessing</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>avg rtt to {#PINGSERVER} ({#PINGDESC})</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>custom.ping[{#PINGSERVER}, avg, {#PINGCOUNT}, {#PINGINTERVAL}]</key>
+                            <delay>60</delay>
+                            <history>180d</history>
+                            <value_type>FLOAT</value_type>
+                            <units>ms</units>
+                            <applications>
+                                <application>
+                                    <name>Network</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>packet loss to {#PINGSERVER} ({#PINGDESC})</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>custom.ping[{#PINGSERVER}, loss, {#PINGCOUNT}, {#PINGINTERVAL}]</key>
+                            <delay>60</delay>
+                            <history>180d</history>
+                            <value_type>FLOAT</value_type>
+                            <units>%</units>
+                            <applications>
+                                <application>
+                                    <name>Network</name>
+                                </application>
+                            </applications>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{min(600s)}&lt;&gt;0</expression>
+                                    <name>packet loss from {HOST.NAME} to {#PINGSERVER} ({#PINGDESC})</name>
+                                    <priority>AVERAGE</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>max rtt to {#PINGSERVER} ({#PINGDESC})</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>custom.ping[{#PINGSERVER}, max, {#PINGCOUNT}, {#PINGINTERVAL}]</key>
+                            <delay>60</delay>
+                            <history>180d</history>
+                            <value_type>FLOAT</value_type>
+                            <units>ms</units>
+                            <applications>
+                                <application>
+                                    <name>Network</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>min rtt to {#PINGSERVER} ({#PINGDESC})</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>custom.ping[{#PINGSERVER}, min, {#PINGCOUNT}, {#PINGINTERVAL}]</key>
+                            <delay>60</delay>
+                            <history>180d</history>
+                            <value_type>FLOAT</value_type>
+                            <units>ms</units>
+                            <applications>
+                                <application>
+                                    <name>Network</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>ping to {#PINGSERVER} ({#PINGDESC})</name>
+                            <ymin_type_1>FIXED</ymin_type_1>
+                            <graph_items>
+                                <graph_item>
+                                    <drawtype>DOTTED_LINE</drawtype>
+                                    <color>0000DD</color>
+                                    <item>
+                                        <host>Active pinger</host>
+                                        <key>custom.ping[{#PINGSERVER}, avg, {#PINGCOUNT}, {#PINGINTERVAL}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>DOTTED_LINE</drawtype>
+                                    <color>BB00BB</color>
+                                    <calc_fnc>MAX</calc_fnc>
+                                    <item>
+                                        <host>Active pinger</host>
+                                        <key>custom.ping[{#PINGSERVER}, max, {#PINGCOUNT}, {#PINGINTERVAL}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>2</sortorder>
+                                    <drawtype>DOTTED_LINE</drawtype>
+                                    <color>00BB00</color>
+                                    <calc_fnc>MIN</calc_fnc>
+                                    <item>
+                                        <host>Active pinger</host>
+                                        <key>custom.ping[{#PINGSERVER}, min, {#PINGCOUNT}, {#PINGINTERVAL}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>3</sortorder>
+                                    <drawtype>DOTTED_LINE</drawtype>
+                                    <color>DD0000</color>
+                                    <yaxisside>RIGHT</yaxisside>
+                                    <calc_fnc>MAX</calc_fnc>
+                                    <item>
+                                        <host>Active pinger</host>
+                                        <key>custom.ping[{#PINGSERVER}, loss, {#PINGCOUNT}, {#PINGINTERVAL}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                    <preprocessing>
+                        <step>
+                            <type>JAVASCRIPT</type>
+                            <params>var macro = '{$PINGTARGETS}';
+var fieldRegExp = /\s*([^\s]+)(?:\s+([^\s]+)\s+([^\s]+)(?:\s+(.*))?)?/;
+var discovery = [];
+var items = macro.split(';');
+for (var i=0;i&lt;items.length; i++) {
+  var match = items[i].match(fieldRegExp);
+  if(!match) {
+    throw new Error(&quot;Invalid PINGTARGETS format near:&quot;+items[i]);
+  }
+  discovery.push({&quot;{#PINGSERVER}&quot;: match[1], &quot;{#PINGCOUNT}&quot;: match[2]||5,&quot;{#PINGINTERVAL}&quot;:match[3]||0.2, &quot;{#PINGDESC}&quot;:match[4]||&quot;&quot;});
+}
+return JSON.stringify(discovery);</params>
+                        </step>
+                    </preprocessing>
+                </discovery_rule>
+            </discovery_rules>
+            <macros>
+                <macro>
+                    <macro>{$PINGTARGETS}</macro>
+                </macro>
+            </macros>
+        </template>
+    </templates>
+</zabbix_export>
