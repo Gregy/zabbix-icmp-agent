@@ -16,4 +16,5 @@ Format of PINGTARGETS macro is ; separated list of targets with some other infor
 ```
 <target dns/ip> <pingcount> <pinginterval> <pingdesc>; <target dns/ip> <pingcount> <pinginterval> <pingdesc>; <target dns/ip> <pingcount> <pinginterval> <pingdesc>
 ```
+without the angle brackets, just separate the values by space
 
